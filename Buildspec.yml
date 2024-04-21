@@ -7,10 +7,7 @@ phases:
     commands:
       - echo "Installing dependencies"
       - pip install -r requirements.txt
-  pre_build:
-    commands:
-      - echo "Collecting static files"
-      - python manage.py collectstatic --noinput
+ 
   build:
     commands:
       - echo "Running database migrations"
