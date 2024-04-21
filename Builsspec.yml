@@ -1,3 +1,28 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - echo "Installing dependencies"
+      - pip install -r requirements.txt
+  pre_build:
+    commands:
+      - echo "Collecting static files"
+      - python manage.py collectstatic --noinput
+  build:
+    commands:
+      - echo "Running database migrations"
+      - python manage.py migrate
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+
+artifacts:
+  files:
+    - '**/*'
+  
 
 
 
