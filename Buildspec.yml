@@ -7,14 +7,10 @@ phases:
     commands:
       - echo "Installing dependencies"
       - pip install -r requirements.txt
-  pre_build:
-    commands:
-         - echo "Collecting static files"
-        - python manage.py collectstatic --noinput
   build:
     commands:
-      - echo "Running database migrations"
-      - python manage.py migrate
+      - echo "Running tests"
+      - python manage.py test
   post_build:
     commands:
       - echo "Build completed on `date`"
@@ -22,7 +18,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  
-
-
-
+  name: my-web-app
+  discard-paths: yes
