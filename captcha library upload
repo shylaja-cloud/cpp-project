@@ -1,0 +1,30 @@
+# Validate CAPTCHA
+def validate_captcha(user_input, captcha_text):
+    return user_input.lower() == captcha_text.lower()
+
+
+def login(username, password, entered_captcha, captcha_text):
+    if validate_captcha(entered_captcha, captcha_text):
+        # CAPTCHA is correct, proceed with login
+        # Implement your login logic here
+        print("Login successful!")
+    else:
+        # CAPTCHA is incorrect
+        print("CAPTCHA validation failed!")
+
+
+def college_management_system_login():
+    # Generate CAPTCHA image and text
+    captcha_text, captcha_image = generate_captcha_image()
+    captcha_image.show()
+
+    # Simulate user input
+    username = input("Enter username: ")
+    password = input("Enter password: ")
+    entered_captcha = input("Enter the CAPTCHA shown above: ")
+
+    # Perform login with CAPTCHA validation
+    login(username, password, entered_captcha, captcha_text)
+
+# Test the login process
+college_management_system_login()
